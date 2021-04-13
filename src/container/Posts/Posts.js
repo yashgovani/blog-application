@@ -13,13 +13,18 @@ class Posts extends React.Component {
   }
 
   postSelectedHandler = (id) => {
-    this.props.history.push({ pathname: '/post/' + id });
+    this.props.history.push('/post/' + id);
   };
 
   postDeleteHandler = (id) => {
-    axios.delete(`/posts/${id}.json`).catch((err) => {
-      console.log(err);
-    });
+    axios
+      .delete(`/posts/${id}.json`)
+      .then((response) => {
+        this.props.posts.filter((pst) => pst.id !== id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   /*   postUpdateHandler = (id) => {
@@ -46,11 +51,11 @@ class Posts extends React.Component {
     return (
       <div>
         <section>{posts}</section>
-         <Route
+        <Route
           path={this.props.match.url + '/:id'}
           exact
           component={FullPost}
-        /> 
+        />
       </div>
     );
   }

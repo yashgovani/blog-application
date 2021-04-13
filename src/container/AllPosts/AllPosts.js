@@ -13,7 +13,7 @@ class AllPosts extends React.Component {
   }
 
   postSelectedHandler = (id) => {
-    this.props.history.push({ pathname: '/post/' + id });
+    this.props.history.push('/allpost/' + id );
   };
 
   render() {

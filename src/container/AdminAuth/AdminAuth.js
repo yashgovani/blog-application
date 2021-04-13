@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Auth.module.css';
+import classes from './AdminAuth.module.css';
 import Input from '../../component/Input/Input';
 import Spinner from '../../component/Spinner/Spinner';
 import Button from '../../component/Button/Button';
@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/action/index';
 import { Redirect } from 'react-router';
 
-class Auth extends React.Component {
+class AdminAuth extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -123,8 +123,6 @@ class Auth extends React.Component {
     });
   };
 
- 
-
   render() {
     const formElementArray = [];
     for (let key in this.state.controls) {
@@ -158,11 +156,11 @@ class Auth extends React.Component {
     }
     let authRedirect = null;
     if (this.props.isAuthenticated) {
-      authRedirect = <Redirect to="/newpost" />;
+      authRedirect = <Redirect to="/admin/dashboard" />;
     }
 
     return (
-      <div className={classes.Auth}>
+      <div className={classes.AdminAuth}>
         {authRedirect}
         {errorMessage}
         <form onSubmit={this.submitHandler}>
@@ -192,4 +190,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminAuth);

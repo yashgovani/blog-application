@@ -39,7 +39,7 @@ class FullPost extends React.Component {
   render() {
     let post = <p>{this.props.match.params.id} hello</p>;
     if (this.props.match.params.id) {
-      post = <p>Loading..........</p>;
+      post = <p>Loading..</p>;
     }
     if (this.state.loadedPost) {
       post = (

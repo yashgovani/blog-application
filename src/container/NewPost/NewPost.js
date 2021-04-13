@@ -3,6 +3,7 @@ import Input from '../../component/Input/Input';
 import Button from '../../component/Button/Button';
 import * as actions from '../../store/action/index';
 import { connect } from 'react-redux';
+//import axios from '../../axios-post';
 //import { updateObject } from '../../utility';
 
 class NewPost extends React.Component {
@@ -69,19 +70,6 @@ class NewPost extends React.Component {
           valid: false,
           touched: false,
         },
-       /*  image: {
-          label: 'image',
-          elementType: 'input',
-          elementConfig: {
-            type: 'file',
-          },
-          value: '',
-          validation: {
-            required: true,
-          },
-          valid: false,
-          touched: false,
-        }, */
       },
       formIsValid: false,
     };
@@ -140,20 +128,7 @@ class NewPost extends React.Component {
     this.props.onUploadPost(post, this.props.token);
   };
 
-  /*  postHandler = (e) => {
-    e.preventDefault();
-    const postData = {
-      blogType: this.state.postBlog.blogType.value,
-      title: this.state.postBlog.title.value,
-      authorName: this.state.postBlog.authorName.value,
-      blog: this.state.postBlog.blog.value,
-      email: this.props.email,
-      userId: this.props.userId,
-    }; */
 
-  /*  console.log(postData);
-    this.props.onUploadPost(postData, this.props.token);
-  }; */
 
   inputChangeHandler = (event, controlName) => {
     const updatedPost = {

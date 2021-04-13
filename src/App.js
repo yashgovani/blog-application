@@ -8,6 +8,8 @@ import Posts from './container/Posts/Posts';
 import { connect } from 'react-redux';
 import * as actions from './store/action/index';
 import AllPosts from './container/AllPosts/AllPosts';
+import AdminAuth from './container/AdminAuth/AdminAuth';
+import Dashboard from './container/Dashboard/Dashboard';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,16 +24,19 @@ class App extends React.Component {
   render() {
     let routes = (
       <Switch>
-        <Route path="/allpost" exact component={AllPosts} />
+        <Route path="/allpost" component={AllPosts} />
         <Route path="/login" component={Auth} />
+        <Route path="/admin/login" component={AdminAuth} />
         <Redirect from="/" to="/allpost" />
       </Switch>
     );
     if (this.props.isAuthenticated) {
       routes = (
         <Switch>
-          <Route path="/allpost" exact component={AllPosts} />
-          <Route path="/login" exact component={Auth} />
+          <Route path="/allpost" component={AllPosts} />
+          <Route path="/login" component={Auth} />
+          <Route path="/admin/dashboard" component={Dashboard} />
+          <Route path="/admin/login" component={AdminAuth} />
           <Route path="/newpost" component={NewPost} />
           <Route path="/logout" component={Logout} />
           <Route path="/post" component={Posts} />
